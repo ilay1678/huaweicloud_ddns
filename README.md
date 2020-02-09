@@ -1,36 +1,39 @@
-# huaweicloud_ddns  华为云ddns脚本
+# huaweicloud_ddns_ipv6  华为云ddns脚本ipv6版
+
+## 本脚本仅适用于ipv6地址的更新
+## 网卡地址获取仅适用于Debian9+/Ubuntu18+（旧版本网卡地址获取请参考old分支）
+## 选择网卡获取ipv6地址时，请确认代码第95 97行处sed的行数
+## 请确认服务器的地域，并合适选择EndPoint地址
 
 ## 安装
 ubuntu/debian
 ```
 apt-get update
-apt-get install wget curl dnsutils openssl cron -y
-wget -N --no-check-certificate https://raw.githubusercontent.com/lllvcs/huaweicloud_ddns/master/getid.sh
-wget -N --no-check-certificate https://raw.githubusercontent.com/lllvcs/huaweicloud_ddns/master/huaweicloud_ddns.sh
-chmod +x ./huaweicloud_ddns.sh
-chmod +x ./getid.sh
+apt-get install wget curl dnsutils cron -y
+wget -N --no-check-certificate https://raw.githubusercontent.com/lllvcs/huaweicloud_ddns/ipv6/huaweicloud_ddns_ipv6.sh
+OR
+wget -N --no-check-certificate https://gitee.com/lvcs/huaweicloud_ddns/raw/ipv6/huaweicloud_ddns_ipv6.sh
+chmod +x ./huaweicloud_ddns_ipv6.sh
 ```
 
 centos
 ```
-yum install wget curl bind-utils openssl cron -y
-wget -N --no-check-certificate https://raw.githubusercontent.com/lllvcs/huaweicloud_ddns/master/getid.sh
-wget -N --no-check-certificate https://raw.githubusercontent.com/lllvcs/huaweicloud_ddns/master/huaweicloud_ddns.sh
-chmod +x ./huaweicloud_ddns.sh
-chmod +x ./getid.sh
+yum install wget curl bind-utils cron -y
+wget -N --no-check-certificate https://raw.githubusercontent.com/lllvcs/huaweicloud_ddns/ipv6/huaweicloud_ddns_ipv6.sh
+OR
+wget -N --no-check-certificate https://gitee.com/lvcs/huaweicloud_ddns/raw/ipv6/huaweicloud_ddns_ipv6.sh
+chmod +x ./huaweicloud_ddns_ipv6.sh
 ```
 
 ## 首次操作
-第一步，先在DNS管理控制台```https://console.huaweicloud.com/dns/```内添加对应域名解析记录
+第一步，先在DNS管理控制台```https://console.huaweicloud.com/dns/```内添加对应域名解析AAAA记录
 
-第二步，在```getid.sh```内按照提示填写相应信息。运行```getid.sh```，获取需要解析域名的```ZONE_ID```和```RECORDSET_ID```
+第二步，在```huaweicloud_ddns_ipv6.sh```内填写 ```账号信息``` ```域名信息```
 
-第三步，在```huaweicloud_ddns.sh```内填写 ```ZONE_ID``` ```RECORDSET_ID```  ```ACCESS_KEY``` ```ACCESS_SECRET```
-
-第四步，运行```huaweicloud_ddns.sh```，设置定时任务
+第三步，运行```huaweicloud_ddns_ipv6.sh```，设置定时任务
 
 ## 设置定时任务
 ```
 crontab -e
-*/1 * * * * bash /root/huaweicloud_ddns.sh
+* * * * * bash /root/huaweicloud_ddns_ipv6.sh
 ```
