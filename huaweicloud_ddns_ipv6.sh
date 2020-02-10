@@ -10,10 +10,11 @@ clear
 
 #用户名
 username=""
-#密码
-password=""
 #账户名
 accountname=""
+#密码
+password=""
+
 #域名
 domain="example.com"
 #主机名
@@ -29,7 +30,7 @@ GETIPURL="ipv6.ip.sb"
 REMOTE_RESOLVE=1
 
 #从网卡获取ip地址(填写网卡名 如eth0 ens3 he-ipv6)
-#并请根据实际情况填写sed行数(第95 97行处)
+#并请根据实际情况填写sed行数(第96 98行处)
 INTERFACE=""
 
 TARGET_IP=""
