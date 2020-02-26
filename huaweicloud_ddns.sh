@@ -21,13 +21,13 @@ domain="example.com"
 host="www"
 
 #获取ip地址网址
-GETIPURL="ip.sb"
+GETIPURL="http://members.3322.org/dyndns/getip"
 #GETIPURL="http://ip.6655.com/ip.aspx"
 #GETIPURL="http://ip.3322.net"
 #GETIPURL="http://members.3322.org/dyndns/getip"
 
 #从外网api获取ip地址(默认开启1)
-REMOTE_RESOLVE=1
+REMOTE_RESOLVE=0
 
 #从网卡获取ip地址(填写网卡名 如eth0 ens3)
 #并请根据实际情况填写sed行数(第98行处)
@@ -93,9 +93,9 @@ if [ -z $TARGET_IP ]; then
         fi
     else
         if [ $INTERFACE ]; then
-            TARGET_IP=$(ifconfig $INTERFACE | grep 'inet ' | cut -d 't' -f 2 | cut -d ' ' -f 2 )
+            TARGET_IP=$(ip -4 address show "$INTERFACE" | grep inet | awk '{print $2}' | cut -d'/' -f1 | head -n 1 | grep -v "^$" | sort -u)
         else
-            TARGET_IP=$(ifconfig | grep 'inet ' | cut -d 't' -f 2 | cut -d ' ' -f 2 | sed -n 1p )
+            TARGET_IP=$(ip -4 address show | grep inet | awk '{print $2}' | cut -d'/' -f1 | head -n 1 | grep -v "^$" | sort -u)
         fi
     fi
 fi
