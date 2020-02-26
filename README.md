@@ -15,12 +15,14 @@
 
 ### openwrt/lede
 将脚本修改后上传到/root
+
 【系统-计划任务】
 
      * * * * * bash /root/huaweicloud_ddns_ipv6.sh
 
 ### padavan
 将脚本修改后上传到/etc/storege
+
 【 系统管理 - 服务 - 计划任务 (Crontab)】
 
     * * * * * bash /etc/storege/huaweicloud_ddns_ipv6.sh
