@@ -21,13 +21,13 @@ domain="example.com"
 host="ipv6"
 
 #获取ip地址网址
-GETIPURL="ipv6.ip.sb"
+GETIPURL="v6.ip.zxinc.org/getip"
 #GETIPURL="https://v6.yinghualuo.cn"
 #GETIPURL="https://ip.lsy.cn/getip"
 #GETIPURL="https://www.ipqi.co"
 
 #从外网api获取ip地址(开启1/关闭0 默认开启)
-REMOTE_RESOLVE=1
+REMOTE_RESOLVE=0
 
 #从网卡获取ip地址(填写网卡名 如eth0 ens3 he-ipv6)
 #并请根据实际情况填写sed行数(第96 98行处)
@@ -93,9 +93,9 @@ if [ -z $TARGET_IP ]; then
         fi
     else
         if [ $INTERFACE ]; then
-            TARGET_IP=$(ifconfig $INTERFACE | grep 'inet6 ' | cut -d 't' -f 2 | cut -d ' ' -f 2 | sed -n 2p)
+            TARGET_IP=$(ip -6 address show "$INTERFACE" | grep inet6 | awk '{print $2}' | cut -d'/' -f1 | head -n 1 | grep -v "^$" | sort -u)
         else
-            TARGET_IP=$(ifconfig | grep 'inet6 ' | cut -d 't' -f 2 | cut -d ' ' -f 2 | sed -n 2p)
+            TARGET_IP=$(ip -6 address show | grep inet6 | awk '{print $2}' | cut -d'/' -f1 | head -n 1 | grep -v "^$" | sort -u)
         fi
     fi
 fi
