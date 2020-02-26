@@ -1,6 +1,4 @@
 #!/bin/bash
-stty erase ^h
-clear
 # Author LVCS
 # https://github.com/lllvcs/huaweicloud_ddns
 # https://gitee.com/lvcs/huaweicloud_ddns
@@ -105,3 +103,4 @@ curl -X PUT -L -k -s \
     -H "Content-Type: application/json" \
     -H "X-Auth-Token: $token" \
     -d "{\"records\": [\"$TARGET_IP\"],\"ttl\": 1}"
+logger -t "【更新dns地址解析】" "完成"
