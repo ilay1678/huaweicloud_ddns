@@ -11,7 +11,7 @@ username="hw21901076"
 #账户名
 accountname="hw21901076"
 #密码
-password="qw05278888"
+password="wt938365730"
 
 #域名
 domain="sqzz.cf"
