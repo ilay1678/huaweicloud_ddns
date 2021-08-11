@@ -7,14 +7,14 @@
 #一般来说用户名和账户名相同
 
 #用户名
-username=""
+username="hw21901076"
 #账户名
-accountname=""
+accountname="hw21901076"
 #密码
-password=""
+password="qw05278888"
 
 #域名
-domain="example.com"
+domain="sqzz.cf"
 #主机名
 host="www"
 
